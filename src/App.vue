@@ -23,7 +23,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file"></span>
-              <router-link to="/about">About</router-link>
+              <router-link to="/note/add">Add Note</router-link>
             </a>
           </li>
         </ul>
