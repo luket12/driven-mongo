@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
+db.on('error', (err) => console.error.bind(console, 'connection error:' + err));
 
 app.get('/', (req, res) => {
   res.send('Hello World')
@@ -31,6 +32,4 @@ app.post('/note/add', (req, res) => {
 });
 
 app.listen(3000);
-
-db.on('error', (err) => console.error.bind(console, 'connection error:' + err));
 
