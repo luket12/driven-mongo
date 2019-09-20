@@ -5,7 +5,9 @@ const Note = require('./models/note');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 app.use(bodyParser.json());
+app.use(cors());
 db.on('error', (err) => console.error.bind(console, 'connection error:' + err));
 
 app.get('/', (req, res) => {
@@ -27,9 +29,9 @@ app.post('/note/add', (req, res) => {
     'title': req.body.title,
     'body': req.body.body,
   });
+  console.log(newNote);
   newNote.save();
   return res.send({ message: 'note saved!', newNote });
 });
 
 app.listen(3000);
-
