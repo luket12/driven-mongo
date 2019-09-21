@@ -1,6 +1,20 @@
 <template>
   <div>
     <h2>Add a note</h2>
+    <div
+      v-if="showSuccess"
+      class="alert alert-success alert-dismissible fade show"
+      role="alert"
+    >
+      A note has been created
+    </div>
+    <div
+      v-if="showDanger"
+      class="alert alert-danger alert-dismissible fade show"
+      role="alert"
+    >
+      A note could not be created
+    </div>
     <div class="row">
       <div class="form-group col-10">
         <label for="title">Note Title</label>
@@ -9,7 +23,8 @@
           name="title"
           id="title"
           v-model="note.title"
-          class="form-control">
+          class="form-control"
+        >
       </div>
       <div class="form-group col-10">
         <textarea
@@ -36,7 +51,9 @@ export default {
   components: {},
   data() {
     return {
-      note: {}
+      note: {},
+      showSuccess: false,
+      showDanger: false,
     }
   },
   methods: {
@@ -44,9 +61,13 @@ export default {
       console.log(this.note);
       axios.post('http://localhost:3000/note/add', this.note)
         .then(() => {
-          // Success validation
-        })
-    }
+          this.showDanger = false;
+          this.showSuccess = true;
+        }).catch(() => {
+        this.showSuccess = false;
+        this.showDanger = true;
+      })
+    },
   }
 }
 </script>
