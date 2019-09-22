@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 mongoose.connect('mongodb://127.0.0.1:27017/driven-mongo', {useNewUrlParser: true});
 const Note = require('./models/note');
+const Todo = require('./models/todo');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -32,6 +33,10 @@ app.post('/note/add', (req, res) => {
   console.log(newNote);
   newNote.save();
   return res.send({ message: 'note saved!', newNote });
+});
+
+app.post('/todo/add', (req, res) => {
+  console.log(req.body);
 });
 
 app.listen(3000);

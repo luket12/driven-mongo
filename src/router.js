@@ -24,5 +24,10 @@ export default new Router({
       name: 'add-note',
       component: () => import(/* webpackChunkName: "about" */ './views/Note/AddNote.vue'),
     },
+    {
+      path: '/todo/add',
+      name: 'add-todo',
+      component: () => import(/* webpackChunkName: "about" */ './views/Todo/AddTodo.vue'),
+    },
   ],
 });

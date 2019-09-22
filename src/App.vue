@@ -27,6 +27,12 @@
                   <router-link to="/note/add">Add Note</router-link>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file"></span>
+                  <router-link to="/todo/add">Add Todo</router-link>
+                </a>
+              </li>
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
